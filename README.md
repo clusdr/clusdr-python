@@ -18,7 +18,7 @@ Requires a running daemon.
 pip install clusdr
 ```
 
-Python 3.10+. Product docs: [Python SDK](https://clusdr.io/docs/sdk/python).
+Same version train as the daemon (first release: `0.1.0`). Python 3.10+. Product docs: [Python SDK](https://clusdr.io/docs/sdk/python).
 
 Contributor checkout (editable + proto regen):
 
