@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clusdr"
+version = "0.1.0"
+description = "Application SDK for the local Clusdr daemon"
+requires-python = ">=3.10"
+authors = [{ name = "Clusdr" }]
+dependencies = [
+    "grpcio>=1.83.1",
+    "protobuf>=7.35.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "grpcio-tools>=1.83.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/odurgut/clusdr-python"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+clusdr = ["py.typed", "v1alpha1/*.pyi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
