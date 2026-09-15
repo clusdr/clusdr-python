@@ -67,7 +67,9 @@ with local() as c:
         ...
 ```
 
-`dial(addr)` is for tests and operators. Apps use `local()`.
+`dial` is for tests and operators. Apps use `local()`.
+
+One `Cluster` is safe for unary calls from several threads. Same connection = same holder (`unlock` is process-wide for that name). One `watch()` iterator per client.
 
 `ttl` is seconds. Leaving `with` (or `close()`) stops Watch, unlocks, and revokes what this process still holds. Failures raise `ClusdrError`.
 

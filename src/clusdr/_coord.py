@@ -18,7 +18,12 @@ if TYPE_CHECKING:
 
 
 class Lock:
-    """A held exclusive lock. token is the fencing token."""
+    """A held exclusive lock.
+
+    ``token`` is the fencing token — store it with any write that must be
+    fenced. Background renew runs until :meth:`Cluster.unlock` or
+    :meth:`Cluster.close`.
+    """
 
     def __init__(self, name: str, holder: str, token: int, deadline: datetime | None) -> None:
         self.name = name
@@ -40,7 +45,12 @@ class Lock:
 
 
 class Lease:
-    """A held TTL grant. token is the fencing token."""
+    """A held TTL grant.
+
+    ``token`` is the fencing token. ``stop_renew()`` (or the ``stop`` event
+    passed to :meth:`Cluster.lease`) stops background renew; the grant then
+    expires. :meth:`Cluster.close` revokes.
+    """
 
     def __init__(self, name: str, owner: str, token: int, deadline: datetime | None) -> None:
         self.name = name

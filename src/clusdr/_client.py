@@ -62,7 +62,14 @@ class Event:
 
 
 class Cluster(CoordMixin):
-    """Application view of the local Clusdr daemon."""
+    """Application view of the local Clusdr daemon.
+
+    Obtained from :func:`local` or :func:`dial`. Use as a context manager, or
+    call :meth:`close` to unlock, revoke, cancel Watch, and close the channel.
+
+    Unary methods are safe from several threads. Run one :meth:`watch` iterator
+    per instance.
+    """
 
     def __init__(self, channel: grpc.Channel, opts: Options) -> None:
         self._channel = channel
@@ -156,6 +163,9 @@ class Cluster(CoordMixin):
         event_types: Sequence[str] | None = None,
     ) -> Iterator[Event]:
         """Stream events. Empty topics/event_types is the full bus.
+
+        Blocking iterator. Reconnects with ``last_seq`` on drop. Run one
+        ``watch()`` per :class:`Cluster`; ``close()`` cancels the last RPC.
 
         Non-empty *topics* (keys, with or without a ``custom.`` prefix) restrict
         the stream to those custom events. The membership snapshot is omitted.
@@ -253,7 +263,12 @@ def local(
     ready_timeout: float = DEFAULT_READY_TIMEOUT,
     server_name: str = "",
 ) -> Cluster:
-    """Connect to the daemon on this host (CLUSDR_GRPC_ADDR or 127.0.0.1:7947)."""
+    """Connect to the daemon on this host.
+
+    Address: ``CLUSDR_GRPC_ADDR`` or ``127.0.0.1:7947``. Then waits on Health
+    (``ready_timeout``, default 10s). This is the application path; tests use
+    :func:`dial`.
+    """
     return connect(
         Options(
             addr=env_addr(),
@@ -277,7 +292,12 @@ def dial(
     ready_timeout: float = DEFAULT_READY_TIMEOUT,
     server_name: str = "",
 ) -> Cluster:
-    """Connect to addr. Tests and operators use this; applications use local()."""
+    """Connect to *addr* (Runtime API host:port).
+
+    Tests and a second daemon on this host. Applications use :func:`local`.
+    Do not point this at a remote node's Runtime API as the normal path.
+    Empty *addr* raises :class:`ClusdrError`.
+    """
     if not addr.strip():
         raise ClusdrError("clusdr: empty dial address")
     return connect(
