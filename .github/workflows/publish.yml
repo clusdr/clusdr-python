@@ -5,8 +5,25 @@ on:
     tags: ["v[0-9]*"]
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: pytest
+        run: pytest -q
+
   pypi:
     name: PyPI
+    needs: [test]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
