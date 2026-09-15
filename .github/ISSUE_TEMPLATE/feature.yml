@@ -1,0 +1,17 @@
+name: Feature request
+description: A change to the Python SDK
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you solving
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you want
+      description: The Python API change. Daemon-side features belong in odurgut/clusdr.
+    validations:
+      required: true

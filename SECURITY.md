@@ -1,0 +1,15 @@
+# Security Policy
+
+Do not file a public issue for a vulnerability in this SDK.
+
+## Report
+
+Use [GitHub private vulnerability reporting](https://github.com/odurgut/clusdr-python/security/advisories/new).
+
+If the bug is in the daemon, report it on [odurgut/clusdr](https://github.com/odurgut/clusdr/security/advisories/new) instead.
+
+Include the package version (`python -c "import clusdr; print(clusdr.__version__)"` if present, otherwise the PyPI / git tag), what you did, and what happened.
+
+## Support window
+
+Same train as the daemon (**v1alpha1**). We patch the current release. There is no long-term support window yet.
