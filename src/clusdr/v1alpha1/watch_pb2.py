@@ -24,14 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x63lusdr/v1alpha1/watch.proto\x12\x0f\x63lusdr.v1alpha1\"E\n\x0cWatchRequest\x12\x13\n\x0b\x65vent_types\x18\x01 \x03(\t\x12\x10\n\x08last_seq\x18\x02 \x01(\x04\x12\x0e\n\x06topics\x18\x03 \x03(\t\"f\n\rWatchResponse\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0e\n\x06source\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\x12\x19\n\x11timestamp_unix_ms\x18\x04 \x01(\x03\x12\x0b\n\x03seq\x18\x05 \x01(\x04\x32X\n\x0cWatchService\x12H\n\x05Watch\x12\x1d.clusdr.v1alpha1.WatchRequest\x1a\x1e.clusdr.v1alpha1.WatchResponse0\x01\x42>Z<github.com/odurgut/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x63lusdr/v1alpha1/watch.proto\x12\x0f\x63lusdr.v1alpha1\"E\n\x0cWatchRequest\x12\x13\n\x0b\x65vent_types\x18\x01 \x03(\t\x12\x10\n\x08last_seq\x18\x02 \x01(\x04\x12\x0e\n\x06topics\x18\x03 \x03(\t\"f\n\rWatchResponse\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0e\n\x06source\x18\x02 \x01(\t\x12\x0f\n\x07payload\x18\x03 \x01(\x0c\x12\x19\n\x11timestamp_unix_ms\x18\x04 \x01(\x03\x12\x0b\n\x03seq\x18\x05 \x01(\x04\x32X\n\x0cWatchService\x12H\n\x05Watch\x12\x1d.clusdr.v1alpha1.WatchRequest\x1a\x1e.clusdr.v1alpha1.WatchResponse0\x01\x42>Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'clusdr.v1alpha1.watch_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/odurgut/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
+  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
   _globals['_WATCHREQUEST']._serialized_start=48
   _globals['_WATCHREQUEST']._serialized_end=117
   _globals['_WATCHRESPONSE']._serialized_start=119
