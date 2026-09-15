@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Daemon / Runtime
-    url: https://github.com/odurgut/clusdr/issues/new/choose
+    url: https://github.com/durguto/clusdr/issues/new/choose
     about: The local clusdr process, CLI, Raft, or install.sh.
   - name: Python SDK docs
     url: https://clusdr.io/docs/sdk/python

@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        This tracker is the **Python client**. Daemon / `clusdr` CLI bugs go to [odurgut/clusdr](https://github.com/odurgut/clusdr/issues/new/choose).
+        This tracker is the **Python client**. Daemon / `clusdr` CLI bugs go to [durguto/clusdr](https://github.com/durguto/clusdr/issues/new/choose).
   - type: textarea
     id: happened
     attributes:

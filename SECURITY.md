@@ -4,9 +4,9 @@ Do not file a public issue for a vulnerability in this SDK.
 
 ## Report
 
-Use [GitHub private vulnerability reporting](https://github.com/odurgut/clusdr-python/security/advisories/new).
+Use [GitHub private vulnerability reporting](https://github.com/durguto/clusdr-python/security/advisories/new).
 
-If the bug is in the daemon, report it on [odurgut/clusdr](https://github.com/odurgut/clusdr/security/advisories/new) instead.
+If the bug is in the daemon, report it on [durguto/clusdr](https://github.com/durguto/clusdr/security/advisories/new) instead.
 
 Include the package version (`python -c "import clusdr; print(clusdr.__version__)"` if present, otherwise the PyPI / git tag), what you did, and what happened.
 

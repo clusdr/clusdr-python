@@ -1,6 +1,6 @@
 # Contributing
 
-This is the Python SDK. The daemon lives in [`clusdr`](https://github.com/odurgut/clusdr). Product docs: [Python SDK](https://clusdr.io/docs/sdk/python).
+This is the Python SDK. The daemon lives in [`clusdr`](https://github.com/durguto/clusdr). Product docs: [Python SDK](https://clusdr.io/docs/sdk/python).
 
 License: [Apache-2.0](LICENSE). Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). Security: [SECURITY.md](SECURITY.md).
 
