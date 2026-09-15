@@ -182,15 +182,32 @@ class Watch(watch_pb2_grpc.WatchServiceServicer):
     def Watch(
         self, request: watch_pb2.WatchRequest, context: grpc.ServicerContext
     ) -> Iterator[watch_pb2.WatchResponse]:
-        yield watch_pb2.WatchResponse(
+        topics = [t[7:] if t.startswith("custom.") else t for t in request.topics]
+        types = list(request.event_types)
+        snap = watch_pb2.WatchResponse(
             type="member.join", source="node-a", timestamp_unix_ms=1, seq=0
         )
+        if _watch_match(snap.type, topics, types):
+            yield snap
         while context.is_active():
             try:
                 ev = self.state.events.get(timeout=0.05)
             except queue.Empty:
                 continue
+            if not _watch_match(ev.type, topics, types):
+                continue
             yield ev
+
+
+def _watch_match(event_type: str, topics: list[str], types: list[str]) -> bool:
+    if event_type in ("watch.sync", "watch.gap"):
+        return True
+    if topics:
+        if not event_type.startswith("custom.") or event_type[7:] not in topics:
+            return False
+    if types and event_type not in types:
+        return False
+    return True
 
 
 def _ttl_s(ttl_ms: int, reuse: float = 15.0) -> float:

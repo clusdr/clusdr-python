@@ -57,6 +57,69 @@ def test_members_leader_watch_publish(fake_daemon: tuple) -> None:
         cluster.close()
 
 
+def test_watch_topics(fake_daemon: tuple) -> None:
+    addr, _ = fake_daemon
+    cluster = dial(addr, insecure=True)
+    try:
+        events = []
+        done = threading.Event()
+
+        def consume() -> None:
+            for ev in cluster.watch(topics=["deployment"]):
+                events.append(ev)
+                if ev.type == "custom.deployment":
+                    done.set()
+                    return
+
+        t = threading.Thread(target=consume, daemon=True)
+        t.start()
+        time.sleep(0.05)
+        cluster.publish("noise", "x")
+        cluster.publish("deployment", {"sha": "abc"})
+        assert done.wait(3)
+        assert not any(e.type == "member.join" for e in events)
+        assert not any(e.type == "custom.noise" for e in events)
+        assert any(e.type == "custom.deployment" for e in events)
+    finally:
+        cluster.close()
+
+
+def test_watch_event_types(fake_daemon: tuple) -> None:
+    addr, _ = fake_daemon
+    cluster = dial(addr, insecure=True)
+    try:
+        events = []
+        done = threading.Event()
+
+        def consume() -> None:
+            for ev in cluster.watch(event_types=["custom.deployment"]):
+                events.append(ev)
+                if ev.type == "custom.deployment":
+                    done.set()
+                    return
+
+        t = threading.Thread(target=consume, daemon=True)
+        t.start()
+        time.sleep(0.05)
+        cluster.publish("noise", "x")
+        cluster.publish("deployment", {"sha": "abc"})
+        assert done.wait(3)
+        assert not any(e.type == "member.join" for e in events)
+        assert not any(e.type == "custom.noise" for e in events)
+    finally:
+        cluster.close()
+
+
+def test_watch_bad_topic(fake_daemon: tuple) -> None:
+    addr, _ = fake_daemon
+    cluster = dial(addr, insecure=True)
+    try:
+        with pytest.raises(ClusdrError, match="topic"):
+            next(cluster.watch(topics=["bad topic"]))
+    finally:
+        cluster.close()
+
+
 def test_local_uses_env_addr(fake_daemon: tuple, monkeypatch: pytest.MonkeyPatch) -> None:
     addr, _ = fake_daemon
     monkeypatch.setenv("CLUSDR_GRPC_ADDR", addr)

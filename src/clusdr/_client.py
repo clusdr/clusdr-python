@@ -6,7 +6,7 @@ import json
 import threading
 import time
 import uuid
-from collections.abc import Iterator
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
@@ -150,15 +150,37 @@ class Cluster(CoordMixin):
         if resp is not None and not resp.accepted:
             raise ClusdrError(f"clusdr: publish rejected: {resp.message}")
 
-    def watch(self) -> Iterator[Event]:
+    def watch(
+        self,
+        topics: Sequence[str] | None = None,
+        event_types: Sequence[str] | None = None,
+    ) -> Iterator[Event]:
+        """Stream events. Empty topics/event_types is the full bus.
+
+        Non-empty *topics* (keys, with or without a ``custom.`` prefix) restrict
+        the stream to those custom events. The membership snapshot is omitted.
+        Custom events are not replayed on reconnect. The same filter is reused
+        after a drop. *event_types* matches full type strings; ``watch.sync``
+        and ``watch.gap`` always pass.
+        """
+        topic_list = _normalize_watch_topics(topics)
+        type_list = _normalize_watch_types(event_types)
         last_seq = 0
         backoff = 0.05
         while not self._closed.is_set():
             try:
-                call = self._watch.Watch(watch_pb2.WatchRequest(last_seq=last_seq))
+                call = self._watch.Watch(
+                    watch_pb2.WatchRequest(
+                        last_seq=last_seq,
+                        topics=topic_list,
+                        event_types=type_list,
+                    )
+                )
             except grpc.RpcError as exc:
                 if self._closed.is_set() or exc.code() == grpc.StatusCode.CANCELLED:
                     return
+                if exc.code() == grpc.StatusCode.INVALID_ARGUMENT:
+                    raise ClusdrError(f"clusdr: watch: {exc}") from exc
                 if not self._sleep(backoff):
                     return
                 backoff = min(backoff * 2, 2.0)
@@ -182,6 +204,8 @@ class Cluster(CoordMixin):
             except grpc.RpcError as exc:
                 if self._closed.is_set() or exc.code() == grpc.StatusCode.CANCELLED:
                     return
+                if exc.code() == grpc.StatusCode.INVALID_ARGUMENT:
+                    raise ClusdrError(f"clusdr: watch: {exc}") from exc
             finally:
                 with self._watch_lock:
                     if self._watch_call is call:
@@ -313,3 +337,40 @@ def encode_payload(payload: bytes | str | dict[str, Any] | list[Any] | None) -> 
 
 def _ts(unix_ms: int) -> datetime:
     return datetime.fromtimestamp(unix_ms / 1000.0, tz=timezone.utc)
+
+
+_MAX_WATCH_TOPIC = 128
+
+
+def _normalize_watch_topics(topics: Sequence[str] | None) -> list[str]:
+    if not topics:
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for raw in topics:
+        t = raw.strip()
+        if t.startswith("custom."):
+            t = t[7:]
+        if not t:
+            continue
+        if len(t) > _MAX_WATCH_TOPIC or not all(ch.isalnum() or ch in "._-" for ch in t):
+            raise ClusdrError(f"clusdr: watch topic {raw!r} is invalid")
+        if t in seen:
+            continue
+        seen.add(t)
+        out.append(t)
+    return out
+
+
+def _normalize_watch_types(types: Sequence[str] | None) -> list[str]:
+    if not types:
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for raw in types:
+        t = raw.strip()
+        if not t or t in seen:
+            continue
+        seen.add(t)
+        out.append(t)
+    return out

@@ -18,7 +18,7 @@
 Application SDK for the **local** Clusdr daemon. This package does not join the cluster.
 
 ```text
-your process  ──►  clusdr on this host  ──►  the rest of the cluster
+your process  ──►  clusdr daemon on this host  ──►  the rest of the cluster
 ```
 
 Not a database, queue, or Kubernetes. Wire API is **v1alpha1**. TLS is on by default.
@@ -61,6 +61,10 @@ with local() as c:
     for event in c.watch():
         # member.join, leader.changed, custom.deployment, …
         ...
+
+    for event in c.watch(topics=["deployment"]):
+        # only custom.deployment (no membership snapshot)
+        ...
 ```
 
 `dial(addr)` is for tests and operators. Apps use `local()`.
@@ -76,7 +80,6 @@ On unless `insecure=True` or `CLUSDR_TLS=disabled`. PEMs (`ca.crt`, `node.crt`, 
 ## Not in this package
 
 - Join, promote, or configure the cluster (CLI)
-- Watch topic filters
 - Async / `asyncio`
 - Talking to a remote node's Runtime API as the normal path — put a daemon on that host
 
