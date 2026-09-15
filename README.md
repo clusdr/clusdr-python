@@ -29,7 +29,7 @@ Not a database, queue, or Kubernetes. Wire API is **v1alpha1**. TLS is on by def
 pip install clusdr
 ```
 
-CPython 3.10+. Same version train as the daemon (first release: `0.1.0`).
+CPython 3.10+. Same version train as the daemon.
 
 A running daemon on this host is required:
 
