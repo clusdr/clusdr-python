@@ -24,14 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n clusdr/v1alpha1/membership.proto\x12\x0f\x63lusdr.v1alpha1\"S\n\x06Member\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0e\n\x06leader\x18\x04 \x01(\x08\x12\x0c\n\x04role\x18\x05 \x01(\t\"\x14\n\x12ListMembersRequest\"?\n\x13ListMembersResponse\x12(\n\x07members\x18\x01 \x03(\x0b\x32\x17.clusdr.v1alpha1.Member\"\x12\n\x10GetLeaderRequest\"7\n\x11GetLeaderResponse\x12\x11\n\tleader_id\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t2\xc1\x01\n\x11MembershipService\x12X\n\x0bListMembers\x12#.clusdr.v1alpha1.ListMembersRequest\x1a$.clusdr.v1alpha1.ListMembersResponse\x12R\n\tGetLeader\x12!.clusdr.v1alpha1.GetLeaderRequest\x1a\".clusdr.v1alpha1.GetLeaderResponseB>Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n clusdr/v1alpha1/membership.proto\x12\x0f\x63lusdr.v1alpha1\"S\n\x06Member\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12\x0e\n\x06status\x18\x03 \x01(\t\x12\x0e\n\x06leader\x18\x04 \x01(\x08\x12\x0c\n\x04role\x18\x05 \x01(\t\"\x14\n\x12ListMembersRequest\"?\n\x13ListMembersResponse\x12(\n\x07members\x18\x01 \x03(\x0b\x32\x17.clusdr.v1alpha1.Member\"\x12\n\x10GetLeaderRequest\"7\n\x11GetLeaderResponse\x12\x11\n\tleader_id\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t2\xc1\x01\n\x11MembershipService\x12X\n\x0bListMembers\x12#.clusdr.v1alpha1.ListMembersRequest\x1a$.clusdr.v1alpha1.ListMembersResponse\x12R\n\tGetLeader\x12!.clusdr.v1alpha1.GetLeaderRequest\x1a\".clusdr.v1alpha1.GetLeaderResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'clusdr.v1alpha1.membership_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
+  _globals['DESCRIPTOR']._serialized_options = b'Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
   _globals['_MEMBER']._serialized_start=53
   _globals['_MEMBER']._serialized_end=136
   _globals['_LISTMEMBERSREQUEST']._serialized_start=138

@@ -24,14 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/events.proto\x12\x0f\x63lusdr.v1alpha1\"f\n\x13PublishEventRequest\x12\r\n\x05topic\x18\x01 \x01(\t\x12\x0f\n\x07payload\x18\x02 \x01(\x0c\x12\x10\n\x08\x65vent_id\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\r\n\x05relay\x18\x05 \x01(\x08\"Y\n\x14PublishEventResponse\x12\x10\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x65vent_id\x18\x03 \x01(\t\x12\x0c\n\x04type\x18\x04 \x01(\t2k\n\x0c\x45ventService\x12[\n\x0cPublishEvent\x12$.clusdr.v1alpha1.PublishEventRequest\x1a%.clusdr.v1alpha1.PublishEventResponseB>Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/events.proto\x12\x0f\x63lusdr.v1alpha1\"f\n\x13PublishEventRequest\x12\r\n\x05topic\x18\x01 \x01(\t\x12\x0f\n\x07payload\x18\x02 \x01(\x0c\x12\x10\n\x08\x65vent_id\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\r\n\x05relay\x18\x05 \x01(\x08\"Y\n\x14PublishEventResponse\x12\x10\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x65vent_id\x18\x03 \x01(\t\x12\x0c\n\x04type\x18\x04 \x01(\t2k\n\x0c\x45ventService\x12[\n\x0cPublishEvent\x12$.clusdr.v1alpha1.PublishEventRequest\x1a%.clusdr.v1alpha1.PublishEventResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'clusdr.v1alpha1.events_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
+  _globals['DESCRIPTOR']._serialized_options = b'Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
   _globals['_PUBLISHEVENTREQUEST']._serialized_start=49
   _globals['_PUBLISHEVENTREQUEST']._serialized_end=151
   _globals['_PUBLISHEVENTRESPONSE']._serialized_start=153

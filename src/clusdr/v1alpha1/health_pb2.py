@@ -24,14 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/health.proto\x12\x0f\x63lusdr.v1alpha1\"\x0f\n\rHealthRequest\"T\n\x0eHealthResponse\x12\x0f\n\x07node_id\x18\x01 \x01(\t\x12\x12\n\ncluster_id\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x0f\n\x07healthy\x18\x04 \x01(\x08\x32Z\n\rHealthService\x12I\n\x06Health\x12\x1e.clusdr.v1alpha1.HealthRequest\x1a\x1f.clusdr.v1alpha1.HealthResponseB>Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/health.proto\x12\x0f\x63lusdr.v1alpha1\"\x0f\n\rHealthRequest\"T\n\x0eHealthResponse\x12\x0f\n\x07node_id\x18\x01 \x01(\t\x12\x12\n\ncluster_id\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x0f\n\x07healthy\x18\x04 \x01(\x08\x32Z\n\rHealthService\x12I\n\x06Health\x12\x1e.clusdr.v1alpha1.HealthRequest\x1a\x1f.clusdr.v1alpha1.HealthResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'clusdr.v1alpha1.health_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z<github.com/durguto/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
+  _globals['DESCRIPTOR']._serialized_options = b'Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
   _globals['_HEALTHREQUEST']._serialized_start=49
   _globals['_HEALTHREQUEST']._serialized_end=64
   _globals['_HEALTHRESPONSE']._serialized_start=66
