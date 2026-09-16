@@ -12,6 +12,6 @@ body:
     id: proposal
     attributes:
       label: What you want
-      description: The Python API change. Daemon-side features belong in durguto/clusdr.
+      description: The Python API change. Daemon-side features belong in clusdr/clusdr.
     validations:
       required: true

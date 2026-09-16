@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://clusdr.io">
-    <img src="https://raw.githubusercontent.com/durguto/clusdr/main/docs/assets/logo-512.png" alt="clusdr" width="96" height="96">
+    <img src="https://raw.githubusercontent.com/clusdr/clusdr/main/docs/assets/logo-512.png" alt="clusdr" width="96" height="96">
   </a>
 </p>
 
@@ -10,9 +10,9 @@
 <p align="center">
   <a href="https://clusdr.io/docs/sdk/python"><img src="https://img.shields.io/badge/docs-clusdr.io-0C0C10" alt="docs"></a>
   <a href="https://pypi.org/project/clusdr/"><img src="https://img.shields.io/pypi/v/clusdr" alt="PyPI"></a>
-  <a href="https://github.com/durguto/clusdr-python/actions/workflows/ci.yml"><img src="https://github.com/durguto/clusdr-python/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://github.com/durguto/clusdr-python/blob/main/pyproject.toml"><img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python 3.10+"></a>
-  <a href="https://github.com/durguto/clusdr-python/blob/main/LICENSE"><img src="https://img.shields.io/github/license/durguto/clusdr-python" alt="License"></a>
+  <a href="https://github.com/clusdr/clusdr-python/actions/workflows/ci.yml"><img src="https://github.com/clusdr/clusdr-python/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/clusdr/clusdr-python/blob/main/pyproject.toml"><img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python 3.10+"></a>
+  <a href="https://github.com/clusdr/clusdr-python/blob/main/LICENSE"><img src="https://img.shields.io/github/license/clusdr/clusdr-python" alt="License"></a>
 </p>
 
 Application SDK for the **local** Clusdr daemon. This package does not join the cluster.
@@ -37,7 +37,7 @@ A running daemon on this host is required:
 curl -fsSL https://clusdr.io/install.sh | sh
 ```
 
-Linux amd64/arm64, or [Docker Hub `durguto/clusdr`](https://hub.docker.com/r/durguto/clusdr) (GHCR: `ghcr.io/durguto/clusdr`). Then `clusdr init` and `clusdr start --bootstrap`. Guide: [first member](https://clusdr.io/docs/guide/first-member).
+Linux amd64/arm64, or [Docker Hub `durguto/clusdr`](https://hub.docker.com/r/durguto/clusdr) (GHCR: `ghcr.io/clusdr/clusdr`). Then `clusdr init` and `clusdr start --bootstrap`. Guide: [first member](https://clusdr.io/docs/guide/first-member).
 
 ## Use
 
@@ -88,7 +88,7 @@ On unless `insecure=True` or `CLUSDR_TLS=disabled`. PEMs (`ca.crt`, `node.crt`, 
 ## Links
 
 - **Docs:** [clusdr.io](https://clusdr.io) · [Python SDK](https://clusdr.io/docs/sdk/python) · [from your app](https://clusdr.io/docs/guide/from-your-app)
-- **Daemon:** [github.com/durguto/clusdr](https://github.com/durguto/clusdr)
-- **This repo:** [github.com/durguto/clusdr-python](https://github.com/durguto/clusdr-python)
+- **Daemon:** [github.com/clusdr/clusdr](https://github.com/clusdr/clusdr)
+- **This repo:** [github.com/clusdr/clusdr-python](https://github.com/clusdr/clusdr-python)
 
-Apache-2.0. Contributor checkout (editable + proto regen): [CONTRIBUTING.md](https://github.com/durguto/clusdr-python/blob/main/CONTRIBUTING.md).
+Apache-2.0. Contributor checkout (editable + proto regen): [CONTRIBUTING.md](https://github.com/clusdr/clusdr-python/blob/main/CONTRIBUTING.md).

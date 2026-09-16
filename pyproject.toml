@@ -37,7 +37,7 @@ dev = [
 [project.urls]
 Homepage = "https://clusdr.io"
 Documentation = "https://clusdr.io/docs/sdk/python"
-Source = "https://github.com/durguto/clusdr-python"
+Source = "https://github.com/clusdr/clusdr-python"
 
 [tool.setuptools.packages.find]
 where = ["src"]
