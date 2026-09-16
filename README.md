@@ -75,7 +75,7 @@ One `Cluster` is safe for unary calls from several threads. Same connection = sa
 
 `ttl` is seconds. Leaving `with` (or `close()`) stops Watch, unlocks, and revokes what this process still holds. Failures raise `ClusdrError`.
 
-Full surface: [Python SDK](https://clusdr.io/docs/sdk/python).
+Full surface: [Python SDK](https://clusdr.io/docs/sdk/python). Runnable copies (Go, Python, and Rust): [examples](https://github.com/clusdr/clusdr/tree/main/examples).
 
 ## TLS
 
