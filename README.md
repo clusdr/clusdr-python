@@ -1,10 +1,12 @@
-<p align="center">
-  <a href="https://clusdr.io">
-    <img src="https://raw.githubusercontent.com/clusdr/clusdr/main/docs/assets/logo-512.png" alt="clusdr" width="96" height="96">
+<h1 align="center">
+  <a href="https://clusdr.io/docs/sdk/python">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/clusdr/clusdr-python/main/assets/python-lettermark-dark.svg">
+      <img src="https://raw.githubusercontent.com/clusdr/clusdr-python/main/assets/python-lettermark.svg" alt="clusdr Python" width="160" height="164">
+    </picture>
   </a>
-</p>
+</h1>
 
-<p align="center"><strong>clusdr</strong></p>
 <p align="center">A runtime for the cluster. An SDK for the app.</p>
 
 <p align="center">
