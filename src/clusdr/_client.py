@@ -41,7 +41,11 @@ from clusdr.v1alpha1 import (
 
 @dataclass(frozen=True)
 class Member:
-    """A cluster node as seen by the local daemon."""
+    """A cluster node as seen by the local daemon.
+
+    ``status`` is liveness: ``alive`` or ``dead``. A left id is gone from
+    :meth:`Cluster.members`.
+    """
 
     id: str
     address: str
@@ -52,7 +56,12 @@ class Member:
 
 @dataclass(frozen=True)
 class Event:
-    """A cluster or custom event from the Watch stream."""
+    """A cluster or custom event from the Watch stream.
+
+    ``type`` is ``member.join``, ``member.dead`` (crash, still listed),
+    ``member.left`` (``clusdr leave``, gone), ``leader.changed``,
+    ``custom.<topic>``, ``watch.sync``, …
+    """
 
     type: str
     source: str
