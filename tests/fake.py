@@ -239,17 +239,17 @@ class Locks(locks_pb2_grpc.LockServiceServicer):
                 self.table.cv.wait(timeout=0.05)
         context.abort(grpc.StatusCode.CANCELLED, "cancelled")
 
-    def TryLock(self, request: locks_pb2.LockRequest, context: grpc.ServicerContext) -> locks_pb2.LockResponse:
+    def TryLock(self, request: locks_pb2.TryLockRequest, context: grpc.ServicerContext) -> locks_pb2.TryLockResponse:
         rec, ok = self.table.acquire_lock(request.name, request.holder, _ttl_s(request.ttl_ms))
         if not ok:
-            return locks_pb2.LockResponse(
+            return locks_pb2.TryLockResponse(
                 acquired=False,
                 message="held",
                 fencing_token=rec.token,
                 holder=rec.holder,
                 deadline_unix_ms=_deadline_ms(rec),
             )
-        return locks_pb2.LockResponse(
+        return locks_pb2.TryLockResponse(
             acquired=True,
             fencing_token=rec.token,
             holder=rec.holder,
@@ -263,7 +263,7 @@ class Locks(locks_pb2_grpc.LockServiceServicer):
             context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(exc))
         return locks_pb2.UnlockResponse(released=True)
 
-    def Renew(self, request: locks_pb2.RenewLockRequest, context: grpc.ServicerContext) -> locks_pb2.RenewLockResponse:
+    def Renew(self, request: locks_pb2.LockServiceRenewRequest, context: grpc.ServicerContext) -> locks_pb2.LockServiceRenewResponse:
         try:
             with self.table.cv:
                 cur = self.table.locks.get(request.name)
@@ -271,7 +271,7 @@ class Locks(locks_pb2_grpc.LockServiceServicer):
             rec = self.table.renew_lock(request.name, request.holder, request.fencing_token, _ttl_s(request.ttl_ms, reuse))
         except PermissionError as exc:
             context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(exc))
-        return locks_pb2.RenewLockResponse(
+        return locks_pb2.LockServiceRenewResponse(
             renewed=True,
             fencing_token=request.fencing_token,
             deadline_unix_ms=_deadline_ms(rec),
@@ -282,24 +282,24 @@ class Leases(leases_pb2_grpc.LeaseServiceServicer):
     def __init__(self, table: CoordTable) -> None:
         self.table = table
 
-    def Grant(self, request: leases_pb2.GrantLeaseRequest, context: grpc.ServicerContext) -> leases_pb2.GrantLeaseResponse:
+    def Grant(self, request: leases_pb2.GrantRequest, context: grpc.ServicerContext) -> leases_pb2.GrantResponse:
         rec, ok = self.table.grant_lease(request.name, request.owner, _ttl_s(request.ttl_ms))
         if not ok:
-            return leases_pb2.GrantLeaseResponse(
+            return leases_pb2.GrantResponse(
                 granted=False,
                 message="held",
                 fencing_token=rec.token,
                 owner=rec.holder,
                 deadline_unix_ms=_deadline_ms(rec),
             )
-        return leases_pb2.GrantLeaseResponse(
+        return leases_pb2.GrantResponse(
             granted=True,
             fencing_token=rec.token,
             owner=rec.holder,
             deadline_unix_ms=_deadline_ms(rec),
         )
 
-    def Renew(self, request: leases_pb2.RenewLeaseRequest, context: grpc.ServicerContext) -> leases_pb2.RenewLeaseResponse:
+    def Renew(self, request: leases_pb2.LeaseServiceRenewRequest, context: grpc.ServicerContext) -> leases_pb2.LeaseServiceRenewResponse:
         try:
             with self.table.cv:
                 cur = self.table.leases.get(request.name)
@@ -307,18 +307,18 @@ class Leases(leases_pb2_grpc.LeaseServiceServicer):
             rec = self.table.renew_lease(request.name, request.owner, request.fencing_token, _ttl_s(request.ttl_ms, reuse))
         except PermissionError as exc:
             context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(exc))
-        return leases_pb2.RenewLeaseResponse(
+        return leases_pb2.LeaseServiceRenewResponse(
             renewed=True,
             fencing_token=request.fencing_token,
             deadline_unix_ms=_deadline_ms(rec),
         )
 
-    def Revoke(self, request: leases_pb2.RevokeLeaseRequest, context: grpc.ServicerContext) -> leases_pb2.RevokeLeaseResponse:
+    def Revoke(self, request: leases_pb2.RevokeRequest, context: grpc.ServicerContext) -> leases_pb2.RevokeResponse:
         try:
             self.table.revoke_lease(request.name, request.owner, request.fencing_token)
         except PermissionError as exc:
             context.abort(grpc.StatusCode.FAILED_PRECONDITION, str(exc))
-        return leases_pb2.RevokeLeaseResponse(revoked=True)
+        return leases_pb2.RevokeResponse(revoked=True)
 
 
 def start_fake_server(bind: str = "127.0.0.1:0") -> tuple[str, FakeState, grpc.Server]:

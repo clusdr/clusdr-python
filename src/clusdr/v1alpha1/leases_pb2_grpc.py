@@ -5,7 +5,7 @@ import warnings
 
 from clusdr.v1alpha1 import leases_pb2 as clusdr_dot_v1alpha1_dot_leases__pb2
 
-GRPC_GENERATED_VERSION = '1.83.1'
+GRPC_GENERATED_VERSION = '1.84.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -40,18 +40,18 @@ class LeaseServiceStub:
         """
         self.Grant = channel.unary_unary(
                 '/clusdr.v1alpha1.LeaseService/Grant',
-                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseRequest.SerializeToString,
-                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseResponse.FromString,
+                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantRequest.SerializeToString,
+                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantResponse.FromString,
                 _registered_method=True)
         self.Renew = channel.unary_unary(
                 '/clusdr.v1alpha1.LeaseService/Renew',
-                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseRequest.SerializeToString,
-                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseResponse.FromString,
+                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewRequest.SerializeToString,
+                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewResponse.FromString,
                 _registered_method=True)
         self.Revoke = channel.unary_unary(
                 '/clusdr.v1alpha1.LeaseService/Revoke',
-                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseRequest.SerializeToString,
-                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseResponse.FromString,
+                request_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeRequest.SerializeToString,
+                response_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeResponse.FromString,
                 _registered_method=True)
         self.ListLeases = channel.unary_unary(
                 '/clusdr.v1alpha1.LeaseService/ListLeases',
@@ -96,18 +96,18 @@ def add_LeaseServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Grant': grpc.unary_unary_rpc_method_handler(
                     servicer.Grant,
-                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseRequest.FromString,
-                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseResponse.SerializeToString,
+                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantRequest.FromString,
+                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.GrantResponse.SerializeToString,
             ),
             'Renew': grpc.unary_unary_rpc_method_handler(
                     servicer.Renew,
-                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseRequest.FromString,
-                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseResponse.SerializeToString,
+                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewRequest.FromString,
+                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewResponse.SerializeToString,
             ),
             'Revoke': grpc.unary_unary_rpc_method_handler(
                     servicer.Revoke,
-                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseRequest.FromString,
-                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseResponse.SerializeToString,
+                    request_deserializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeRequest.FromString,
+                    response_serializer=clusdr_dot_v1alpha1_dot_leases__pb2.RevokeResponse.SerializeToString,
             ),
             'ListLeases': grpc.unary_unary_rpc_method_handler(
                     servicer.ListLeases,
@@ -144,8 +144,8 @@ class LeaseService:
             request,
             target,
             '/clusdr.v1alpha1.LeaseService/Grant',
-            clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseRequest.SerializeToString,
-            clusdr_dot_v1alpha1_dot_leases__pb2.GrantLeaseResponse.FromString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.GrantRequest.SerializeToString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.GrantResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -171,8 +171,8 @@ class LeaseService:
             request,
             target,
             '/clusdr.v1alpha1.LeaseService/Renew',
-            clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseRequest.SerializeToString,
-            clusdr_dot_v1alpha1_dot_leases__pb2.RenewLeaseResponse.FromString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewRequest.SerializeToString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.LeaseServiceRenewResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -198,8 +198,8 @@ class LeaseService:
             request,
             target,
             '/clusdr.v1alpha1.LeaseService/Revoke',
-            clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseRequest.SerializeToString,
-            clusdr_dot_v1alpha1_dot_leases__pb2.RevokeLeaseResponse.FromString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.RevokeRequest.SerializeToString,
+            clusdr_dot_v1alpha1_dot_leases__pb2.RevokeResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/leases.proto\x12\x0f\x63lusdr.v1alpha1\"@\n\x11GrantLeaseRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x0e\n\x06ttl_ms\x18\x03 \x01(\x03\"v\n\x12GrantLeaseResponse\x12\x0f\n\x07granted\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\r\n\x05owner\x18\x04 \x01(\t\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"W\n\x11RenewLeaseRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06ttl_ms\x18\x04 \x01(\x03\"g\n\x12RenewLeaseResponse\x12\x0f\n\x07renewed\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x04 \x01(\x03\"H\n\x12RevokeLeaseRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\"7\n\x13RevokeLeaseResponse\x12\x0f\n\x07revoked\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\x13\n\x11ListLeasesRequest\"r\n\tLeaseInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x17\n\x0fgranted_unix_ms\x18\x04 \x01(\x03\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"@\n\x12ListLeasesResponse\x12*\n\x06leases\x18\x01 \x03(\x0b\x32\x1a.clusdr.v1alpha1.LeaseInfo2\xde\x02\n\x0cLeaseService\x12P\n\x05Grant\x12\".clusdr.v1alpha1.GrantLeaseRequest\x1a#.clusdr.v1alpha1.GrantLeaseResponse\x12P\n\x05Renew\x12\".clusdr.v1alpha1.RenewLeaseRequest\x1a#.clusdr.v1alpha1.RenewLeaseResponse\x12S\n\x06Revoke\x12#.clusdr.v1alpha1.RevokeLeaseRequest\x1a$.clusdr.v1alpha1.RevokeLeaseResponse\x12U\n\nListLeases\x12\".clusdr.v1alpha1.ListLeasesRequest\x1a#.clusdr.v1alpha1.ListLeasesResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1c\x63lusdr/v1alpha1/leases.proto\x12\x0f\x63lusdr.v1alpha1\";\n\x0cGrantRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x0e\n\x06ttl_ms\x18\x03 \x01(\x03\"q\n\rGrantResponse\x12\x0f\n\x07granted\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\r\n\x05owner\x18\x04 \x01(\t\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"^\n\x18LeaseServiceRenewRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06ttl_ms\x18\x04 \x01(\x03\"n\n\x19LeaseServiceRenewResponse\x12\x0f\n\x07renewed\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x04 \x01(\x03\"C\n\rRevokeRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\"2\n\x0eRevokeResponse\x12\x0f\n\x07revoked\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\x13\n\x11ListLeasesRequest\"r\n\tLeaseInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x17\n\x0fgranted_unix_ms\x18\x04 \x01(\x03\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"@\n\x12ListLeasesResponse\x12*\n\x06leases\x18\x01 \x03(\x0b\x32\x1a.clusdr.v1alpha1.LeaseInfo2\xd8\x02\n\x0cLeaseService\x12\x46\n\x05Grant\x12\x1d.clusdr.v1alpha1.GrantRequest\x1a\x1e.clusdr.v1alpha1.GrantResponse\x12^\n\x05Renew\x12).clusdr.v1alpha1.LeaseServiceRenewRequest\x1a*.clusdr.v1alpha1.LeaseServiceRenewResponse\x12I\n\x06Revoke\x12\x1e.clusdr.v1alpha1.RevokeRequest\x1a\x1f.clusdr.v1alpha1.RevokeResponse\x12U\n\nListLeases\x12\".clusdr.v1alpha1.ListLeasesRequest\x1a#.clusdr.v1alpha1.ListLeasesResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,24 +32,24 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'clusdr.v1alpha1.leases_pb2'
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1'
-  _globals['_GRANTLEASEREQUEST']._serialized_start=49
-  _globals['_GRANTLEASEREQUEST']._serialized_end=113
-  _globals['_GRANTLEASERESPONSE']._serialized_start=115
-  _globals['_GRANTLEASERESPONSE']._serialized_end=233
-  _globals['_RENEWLEASEREQUEST']._serialized_start=235
-  _globals['_RENEWLEASEREQUEST']._serialized_end=322
-  _globals['_RENEWLEASERESPONSE']._serialized_start=324
-  _globals['_RENEWLEASERESPONSE']._serialized_end=427
-  _globals['_REVOKELEASEREQUEST']._serialized_start=429
-  _globals['_REVOKELEASEREQUEST']._serialized_end=501
-  _globals['_REVOKELEASERESPONSE']._serialized_start=503
-  _globals['_REVOKELEASERESPONSE']._serialized_end=558
-  _globals['_LISTLEASESREQUEST']._serialized_start=560
-  _globals['_LISTLEASESREQUEST']._serialized_end=579
-  _globals['_LEASEINFO']._serialized_start=581
-  _globals['_LEASEINFO']._serialized_end=695
-  _globals['_LISTLEASESRESPONSE']._serialized_start=697
-  _globals['_LISTLEASESRESPONSE']._serialized_end=761
-  _globals['_LEASESERVICE']._serialized_start=764
-  _globals['_LEASESERVICE']._serialized_end=1114
+  _globals['_GRANTREQUEST']._serialized_start=49
+  _globals['_GRANTREQUEST']._serialized_end=108
+  _globals['_GRANTRESPONSE']._serialized_start=110
+  _globals['_GRANTRESPONSE']._serialized_end=223
+  _globals['_LEASESERVICERENEWREQUEST']._serialized_start=225
+  _globals['_LEASESERVICERENEWREQUEST']._serialized_end=319
+  _globals['_LEASESERVICERENEWRESPONSE']._serialized_start=321
+  _globals['_LEASESERVICERENEWRESPONSE']._serialized_end=431
+  _globals['_REVOKEREQUEST']._serialized_start=433
+  _globals['_REVOKEREQUEST']._serialized_end=500
+  _globals['_REVOKERESPONSE']._serialized_start=502
+  _globals['_REVOKERESPONSE']._serialized_end=552
+  _globals['_LISTLEASESREQUEST']._serialized_start=554
+  _globals['_LISTLEASESREQUEST']._serialized_end=573
+  _globals['_LEASEINFO']._serialized_start=575
+  _globals['_LEASEINFO']._serialized_end=689
+  _globals['_LISTLEASESRESPONSE']._serialized_start=691
+  _globals['_LISTLEASESRESPONSE']._serialized_end=755
+  _globals['_LEASESERVICE']._serialized_start=758
+  _globals['_LEASESERVICE']._serialized_end=1102
 # @@protoc_insertion_point(module_scope)

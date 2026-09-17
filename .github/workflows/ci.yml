@@ -14,12 +14,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+          version: "1.73.0"
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install
         run: pip install -e ".[dev]"
+
+      - name: Proto pin
+        run: |
+          make proto PROTO_DIR=/does-not-exist PROTO_REF=main
+          git diff --exit-code -- src/clusdr/v1alpha1/
 
       - name: pytest
         run: pytest -q

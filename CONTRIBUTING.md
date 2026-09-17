@@ -28,12 +28,12 @@ CI lints PR commits. Prefer squash-merge; the squash title must stay conventiona
 
 ## Requirements
 
-Python 3.10+.
+Python 3.10+. [Buf](https://buf.build/docs/cli/installation) to regenerate stubs.
 
 ```bash
 pip install -e ".[dev]"
-make proto    # from proto next to this tree (../clusdr/proto)
+make proto    # export buf.build/clusdr/api (sibling ../clusdr/proto/api, else BSR, else GitHub)
 pytest
 ```
 
-Generated stubs live under `src/clusdr/v1alpha1/`. Do not hand-edit them; regenerate from the daemon proto.
+Generated stubs live under `src/clusdr/v1alpha1/`. Do not hand-edit them; regenerate from [`buf.build/clusdr/api`](https://buf.build/clusdr/api). `join` / `heartbeat` are `buf.build/clusdr/internal` and are not exported.

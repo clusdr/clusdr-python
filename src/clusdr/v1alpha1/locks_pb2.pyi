@@ -30,6 +30,30 @@ class LockResponse(_message.Message):
     deadline_unix_ms: int
     def __init__(self, acquired: _Optional[bool] = ..., message: _Optional[str] = ..., fencing_token: _Optional[int] = ..., holder: _Optional[str] = ..., deadline_unix_ms: _Optional[int] = ...) -> None: ...
 
+class TryLockRequest(_message.Message):
+    __slots__ = ("name", "holder", "ttl_ms")
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    HOLDER_FIELD_NUMBER: _ClassVar[int]
+    TTL_MS_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    holder: str
+    ttl_ms: int
+    def __init__(self, name: _Optional[str] = ..., holder: _Optional[str] = ..., ttl_ms: _Optional[int] = ...) -> None: ...
+
+class TryLockResponse(_message.Message):
+    __slots__ = ("acquired", "message", "fencing_token", "holder", "deadline_unix_ms")
+    ACQUIRED_FIELD_NUMBER: _ClassVar[int]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    FENCING_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    HOLDER_FIELD_NUMBER: _ClassVar[int]
+    DEADLINE_UNIX_MS_FIELD_NUMBER: _ClassVar[int]
+    acquired: bool
+    message: str
+    fencing_token: int
+    holder: str
+    deadline_unix_ms: int
+    def __init__(self, acquired: _Optional[bool] = ..., message: _Optional[str] = ..., fencing_token: _Optional[int] = ..., holder: _Optional[str] = ..., deadline_unix_ms: _Optional[int] = ...) -> None: ...
+
 class UnlockRequest(_message.Message):
     __slots__ = ("name", "holder", "fencing_token")
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -48,7 +72,7 @@ class UnlockResponse(_message.Message):
     message: str
     def __init__(self, released: _Optional[bool] = ..., message: _Optional[str] = ...) -> None: ...
 
-class RenewLockRequest(_message.Message):
+class LockServiceRenewRequest(_message.Message):
     __slots__ = ("name", "holder", "fencing_token", "ttl_ms")
     NAME_FIELD_NUMBER: _ClassVar[int]
     HOLDER_FIELD_NUMBER: _ClassVar[int]
@@ -60,7 +84,7 @@ class RenewLockRequest(_message.Message):
     ttl_ms: int
     def __init__(self, name: _Optional[str] = ..., holder: _Optional[str] = ..., fencing_token: _Optional[int] = ..., ttl_ms: _Optional[int] = ...) -> None: ...
 
-class RenewLockResponse(_message.Message):
+class LockServiceRenewResponse(_message.Message):
     __slots__ = ("renewed", "message", "fencing_token", "deadline_unix_ms")
     RENEWED_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]

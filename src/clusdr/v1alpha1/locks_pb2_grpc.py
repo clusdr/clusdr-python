@@ -5,7 +5,7 @@ import warnings
 
 from clusdr.v1alpha1 import locks_pb2 as clusdr_dot_v1alpha1_dot_locks__pb2
 
-GRPC_GENERATED_VERSION = '1.83.1'
+GRPC_GENERATED_VERSION = '1.84.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -45,8 +45,8 @@ class LockServiceStub:
                 _registered_method=True)
         self.TryLock = channel.unary_unary(
                 '/clusdr.v1alpha1.LockService/TryLock',
-                request_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockRequest.SerializeToString,
-                response_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockResponse.FromString,
+                request_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.TryLockRequest.SerializeToString,
+                response_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.TryLockResponse.FromString,
                 _registered_method=True)
         self.Unlock = channel.unary_unary(
                 '/clusdr.v1alpha1.LockService/Unlock',
@@ -55,8 +55,8 @@ class LockServiceStub:
                 _registered_method=True)
         self.Renew = channel.unary_unary(
                 '/clusdr.v1alpha1.LockService/Renew',
-                request_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockRequest.SerializeToString,
-                response_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockResponse.FromString,
+                request_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewRequest.SerializeToString,
+                response_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewResponse.FromString,
                 _registered_method=True)
         self.ListLocks = channel.unary_unary(
                 '/clusdr.v1alpha1.LockService/ListLocks',
@@ -117,8 +117,8 @@ def add_LockServiceServicer_to_server(servicer, server):
             ),
             'TryLock': grpc.unary_unary_rpc_method_handler(
                     servicer.TryLock,
-                    request_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockRequest.FromString,
-                    response_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockResponse.SerializeToString,
+                    request_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.TryLockRequest.FromString,
+                    response_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.TryLockResponse.SerializeToString,
             ),
             'Unlock': grpc.unary_unary_rpc_method_handler(
                     servicer.Unlock,
@@ -127,8 +127,8 @@ def add_LockServiceServicer_to_server(servicer, server):
             ),
             'Renew': grpc.unary_unary_rpc_method_handler(
                     servicer.Renew,
-                    request_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockRequest.FromString,
-                    response_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockResponse.SerializeToString,
+                    request_deserializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewRequest.FromString,
+                    response_serializer=clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewResponse.SerializeToString,
             ),
             'ListLocks': grpc.unary_unary_rpc_method_handler(
                     servicer.ListLocks,
@@ -192,8 +192,8 @@ class LockService:
             request,
             target,
             '/clusdr.v1alpha1.LockService/TryLock',
-            clusdr_dot_v1alpha1_dot_locks__pb2.LockRequest.SerializeToString,
-            clusdr_dot_v1alpha1_dot_locks__pb2.LockResponse.FromString,
+            clusdr_dot_v1alpha1_dot_locks__pb2.TryLockRequest.SerializeToString,
+            clusdr_dot_v1alpha1_dot_locks__pb2.TryLockResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -246,8 +246,8 @@ class LockService:
             request,
             target,
             '/clusdr.v1alpha1.LockService/Renew',
-            clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockRequest.SerializeToString,
-            clusdr_dot_v1alpha1_dot_locks__pb2.RenewLockResponse.FromString,
+            clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewRequest.SerializeToString,
+            clusdr_dot_v1alpha1_dot_locks__pb2.LockServiceRenewResponse.FromString,
             options,
             channel_credentials,
             insecure,

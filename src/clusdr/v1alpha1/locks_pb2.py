@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x63lusdr/v1alpha1/locks.proto\x12\x0f\x63lusdr.v1alpha1\";\n\x0bLockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x0e\n\x06ttl_ms\x18\x03 \x01(\x03\"r\n\x0cLockResponse\x12\x10\n\x08\x61\x63quired\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06holder\x18\x04 \x01(\t\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"D\n\rUnlockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\"3\n\x0eUnlockResponse\x12\x10\n\x08released\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"W\n\x10RenewLockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06ttl_ms\x18\x04 \x01(\x03\"f\n\x11RenewLockResponse\x12\x0f\n\x07renewed\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x04 \x01(\x03\"\x12\n\x10ListLocksRequest\"s\n\x08LockInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x61\x63quired_unix_ms\x18\x04 \x01(\x03\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"=\n\x11ListLocksResponse\x12(\n\x05locks\x18\x01 \x03(\x0b\x32\x19.clusdr.v1alpha1.LockInfo2\x89\x03\n\x0bLockService\x12\x43\n\x04Lock\x12\x1c.clusdr.v1alpha1.LockRequest\x1a\x1d.clusdr.v1alpha1.LockResponse\x12\x46\n\x07TryLock\x12\x1c.clusdr.v1alpha1.LockRequest\x1a\x1d.clusdr.v1alpha1.LockResponse\x12I\n\x06Unlock\x12\x1e.clusdr.v1alpha1.UnlockRequest\x1a\x1f.clusdr.v1alpha1.UnlockResponse\x12N\n\x05Renew\x12!.clusdr.v1alpha1.RenewLockRequest\x1a\".clusdr.v1alpha1.RenewLockResponse\x12R\n\tListLocks\x12!.clusdr.v1alpha1.ListLocksRequest\x1a\".clusdr.v1alpha1.ListLocksResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x63lusdr/v1alpha1/locks.proto\x12\x0f\x63lusdr.v1alpha1\";\n\x0bLockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x0e\n\x06ttl_ms\x18\x03 \x01(\x03\"r\n\x0cLockResponse\x12\x10\n\x08\x61\x63quired\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06holder\x18\x04 \x01(\t\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\">\n\x0eTryLockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x0e\n\x06ttl_ms\x18\x03 \x01(\x03\"u\n\x0fTryLockResponse\x12\x10\n\x08\x61\x63quired\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06holder\x18\x04 \x01(\t\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"D\n\rUnlockRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\"3\n\x0eUnlockResponse\x12\x10\n\x08released\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"^\n\x17LockServiceRenewRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x0e\n\x06ttl_ms\x18\x04 \x01(\x03\"m\n\x18LockServiceRenewResponse\x12\x0f\n\x07renewed\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x04 \x01(\x03\"\x12\n\x10ListLocksRequest\"s\n\x08LockInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06holder\x18\x02 \x01(\t\x12\x15\n\rfencing_token\x18\x03 \x01(\x04\x12\x18\n\x10\x61\x63quired_unix_ms\x18\x04 \x01(\x03\x12\x18\n\x10\x64\x65\x61\x64line_unix_ms\x18\x05 \x01(\x03\"=\n\x11ListLocksResponse\x12(\n\x05locks\x18\x01 \x03(\x0b\x32\x19.clusdr.v1alpha1.LockInfo2\x9d\x03\n\x0bLockService\x12\x43\n\x04Lock\x12\x1c.clusdr.v1alpha1.LockRequest\x1a\x1d.clusdr.v1alpha1.LockResponse\x12L\n\x07TryLock\x12\x1f.clusdr.v1alpha1.TryLockRequest\x1a .clusdr.v1alpha1.TryLockResponse\x12I\n\x06Unlock\x12\x1e.clusdr.v1alpha1.UnlockRequest\x1a\x1f.clusdr.v1alpha1.UnlockResponse\x12\\\n\x05Renew\x12(.clusdr.v1alpha1.LockServiceRenewRequest\x1a).clusdr.v1alpha1.LockServiceRenewResponse\x12R\n\tListLocks\x12!.clusdr.v1alpha1.ListLocksRequest\x1a\".clusdr.v1alpha1.ListLocksResponseB=Z;github.com/clusdr/clusdr/api/clusdr/v1alpha1;clusdrv1alpha1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,20 +36,24 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_LOCKREQUEST']._serialized_end=107
   _globals['_LOCKRESPONSE']._serialized_start=109
   _globals['_LOCKRESPONSE']._serialized_end=223
-  _globals['_UNLOCKREQUEST']._serialized_start=225
-  _globals['_UNLOCKREQUEST']._serialized_end=293
-  _globals['_UNLOCKRESPONSE']._serialized_start=295
-  _globals['_UNLOCKRESPONSE']._serialized_end=346
-  _globals['_RENEWLOCKREQUEST']._serialized_start=348
-  _globals['_RENEWLOCKREQUEST']._serialized_end=435
-  _globals['_RENEWLOCKRESPONSE']._serialized_start=437
-  _globals['_RENEWLOCKRESPONSE']._serialized_end=539
-  _globals['_LISTLOCKSREQUEST']._serialized_start=541
-  _globals['_LISTLOCKSREQUEST']._serialized_end=559
-  _globals['_LOCKINFO']._serialized_start=561
-  _globals['_LOCKINFO']._serialized_end=676
-  _globals['_LISTLOCKSRESPONSE']._serialized_start=678
-  _globals['_LISTLOCKSRESPONSE']._serialized_end=739
-  _globals['_LOCKSERVICE']._serialized_start=742
-  _globals['_LOCKSERVICE']._serialized_end=1135
+  _globals['_TRYLOCKREQUEST']._serialized_start=225
+  _globals['_TRYLOCKREQUEST']._serialized_end=287
+  _globals['_TRYLOCKRESPONSE']._serialized_start=289
+  _globals['_TRYLOCKRESPONSE']._serialized_end=406
+  _globals['_UNLOCKREQUEST']._serialized_start=408
+  _globals['_UNLOCKREQUEST']._serialized_end=476
+  _globals['_UNLOCKRESPONSE']._serialized_start=478
+  _globals['_UNLOCKRESPONSE']._serialized_end=529
+  _globals['_LOCKSERVICERENEWREQUEST']._serialized_start=531
+  _globals['_LOCKSERVICERENEWREQUEST']._serialized_end=625
+  _globals['_LOCKSERVICERENEWRESPONSE']._serialized_start=627
+  _globals['_LOCKSERVICERENEWRESPONSE']._serialized_end=736
+  _globals['_LISTLOCKSREQUEST']._serialized_start=738
+  _globals['_LISTLOCKSREQUEST']._serialized_end=756
+  _globals['_LOCKINFO']._serialized_start=758
+  _globals['_LOCKINFO']._serialized_end=873
+  _globals['_LISTLOCKSRESPONSE']._serialized_start=875
+  _globals['_LISTLOCKSRESPONSE']._serialized_end=936
+  _globals['_LOCKSERVICE']._serialized_start=939
+  _globals['_LOCKSERVICE']._serialized_end=1352
 # @@protoc_insertion_point(module_scope)

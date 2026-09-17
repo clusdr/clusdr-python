@@ -6,7 +6,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
-class GrantLeaseRequest(_message.Message):
+class GrantRequest(_message.Message):
     __slots__ = ("name", "owner", "ttl_ms")
     NAME_FIELD_NUMBER: _ClassVar[int]
     OWNER_FIELD_NUMBER: _ClassVar[int]
@@ -16,7 +16,7 @@ class GrantLeaseRequest(_message.Message):
     ttl_ms: int
     def __init__(self, name: _Optional[str] = ..., owner: _Optional[str] = ..., ttl_ms: _Optional[int] = ...) -> None: ...
 
-class GrantLeaseResponse(_message.Message):
+class GrantResponse(_message.Message):
     __slots__ = ("granted", "message", "fencing_token", "owner", "deadline_unix_ms")
     GRANTED_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
@@ -30,7 +30,7 @@ class GrantLeaseResponse(_message.Message):
     deadline_unix_ms: int
     def __init__(self, granted: _Optional[bool] = ..., message: _Optional[str] = ..., fencing_token: _Optional[int] = ..., owner: _Optional[str] = ..., deadline_unix_ms: _Optional[int] = ...) -> None: ...
 
-class RenewLeaseRequest(_message.Message):
+class LeaseServiceRenewRequest(_message.Message):
     __slots__ = ("name", "owner", "fencing_token", "ttl_ms")
     NAME_FIELD_NUMBER: _ClassVar[int]
     OWNER_FIELD_NUMBER: _ClassVar[int]
@@ -42,7 +42,7 @@ class RenewLeaseRequest(_message.Message):
     ttl_ms: int
     def __init__(self, name: _Optional[str] = ..., owner: _Optional[str] = ..., fencing_token: _Optional[int] = ..., ttl_ms: _Optional[int] = ...) -> None: ...
 
-class RenewLeaseResponse(_message.Message):
+class LeaseServiceRenewResponse(_message.Message):
     __slots__ = ("renewed", "message", "fencing_token", "deadline_unix_ms")
     RENEWED_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
@@ -54,7 +54,7 @@ class RenewLeaseResponse(_message.Message):
     deadline_unix_ms: int
     def __init__(self, renewed: _Optional[bool] = ..., message: _Optional[str] = ..., fencing_token: _Optional[int] = ..., deadline_unix_ms: _Optional[int] = ...) -> None: ...
 
-class RevokeLeaseRequest(_message.Message):
+class RevokeRequest(_message.Message):
     __slots__ = ("name", "owner", "fencing_token")
     NAME_FIELD_NUMBER: _ClassVar[int]
     OWNER_FIELD_NUMBER: _ClassVar[int]
@@ -64,7 +64,7 @@ class RevokeLeaseRequest(_message.Message):
     fencing_token: int
     def __init__(self, name: _Optional[str] = ..., owner: _Optional[str] = ..., fencing_token: _Optional[int] = ...) -> None: ...
 
-class RevokeLeaseResponse(_message.Message):
+class RevokeResponse(_message.Message):
     __slots__ = ("revoked", "message")
     REVOKED_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]

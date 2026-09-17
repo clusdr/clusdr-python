@@ -103,9 +103,9 @@ class CoordMixin:
             return existing
         deadline = self._deadline(timeout)
 
-        def call() -> locks_pb2.LockResponse:
+        def call() -> locks_pb2.TryLockResponse:
             return self._lock.TryLock(
-                locks_pb2.LockRequest(name=name, holder=self._holder, ttl_ms=_ttl_ms(ttl)),
+                locks_pb2.TryLockRequest(name=name, holder=self._holder, ttl_ms=_ttl_ms(ttl)),
                 timeout=self._remaining(deadline),
             )
 
@@ -136,9 +136,9 @@ class CoordMixin:
             return existing
         deadline = self._deadline(timeout)
 
-        def call() -> leases_pb2.GrantLeaseResponse:
+        def call() -> leases_pb2.GrantResponse:
             return self._lease.Grant(
-                leases_pb2.GrantLeaseRequest(name=name, owner=self._holder, ttl_ms=_ttl_ms(ttl)),
+                leases_pb2.GrantRequest(name=name, owner=self._holder, ttl_ms=_ttl_ms(ttl)),
                 timeout=self._remaining(deadline),
             )
 
@@ -160,9 +160,9 @@ class CoordMixin:
             raise ClusdrError(f"clusdr: lease {name!r} is not held by this client")
         deadline = self._deadline(timeout)
 
-        def call() -> leases_pb2.RenewLeaseResponse:
+        def call() -> leases_pb2.LeaseServiceRenewResponse:
             return self._lease.Renew(
-                leases_pb2.RenewLeaseRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
+                leases_pb2.LeaseServiceRenewRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
                 timeout=self._remaining(deadline),
             )
 
@@ -189,7 +189,7 @@ class CoordMixin:
         with self._coord:
             return self._leased.get(name)
 
-    def _adopt_lock(self: Cluster, resp: locks_pb2.LockResponse, name: str, ttl: float | None) -> Lock:
+    def _adopt_lock(self: Cluster, resp: locks_pb2.LockResponse | locks_pb2.TryLockResponse, name: str, ttl: float | None) -> Lock:
         lk = Lock(name, resp.holder or self._holder, resp.fencing_token, _from_ms(resp.deadline_unix_ms))
         lk._cluster = self
         with self._coord:
@@ -202,7 +202,7 @@ class CoordMixin:
 
     def _adopt_lease(
         self: Cluster,
-        resp: leases_pb2.GrantLeaseResponse,
+        resp: leases_pb2.GrantResponse,
         name: str,
         ttl: float | None,
         stop: threading.Event | None,
@@ -245,9 +245,9 @@ class CoordMixin:
         ls._stop.set()
         deadline = self._deadline(timeout)
 
-        def call() -> leases_pb2.RevokeLeaseResponse:
+        def call() -> leases_pb2.RevokeResponse:
             return self._lease.Revoke(
-                leases_pb2.RevokeLeaseRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
+                leases_pb2.RevokeRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
                 timeout=self._remaining(deadline),
             )
 
@@ -306,7 +306,7 @@ class CoordMixin:
                 return
             try:
                 resp = self._lock.Renew(
-                    locks_pb2.RenewLockRequest(name=lk.name, holder=lk.holder, fencing_token=lk.token),
+                    locks_pb2.LockServiceRenewRequest(name=lk.name, holder=lk.holder, fencing_token=lk.token),
                     timeout=self._opts.request_timeout,
                 )
             except grpc.RpcError as exc:
@@ -322,7 +322,7 @@ class CoordMixin:
                 return
             try:
                 resp = self._lease.Renew(
-                    leases_pb2.RenewLeaseRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
+                    leases_pb2.LeaseServiceRenewRequest(name=ls.name, owner=ls.owner, fencing_token=ls.token),
                     timeout=self._opts.request_timeout,
                 )
             except grpc.RpcError as exc:

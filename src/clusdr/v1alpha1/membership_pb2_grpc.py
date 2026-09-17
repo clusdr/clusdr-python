@@ -5,7 +5,7 @@ import warnings
 
 from clusdr.v1alpha1 import membership_pb2 as clusdr_dot_v1alpha1_dot_membership__pb2
 
-GRPC_GENERATED_VERSION = '1.83.1'
+GRPC_GENERATED_VERSION = '1.84.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
