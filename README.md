@@ -2,7 +2,7 @@
   <a href="https://clusdr.io/docs/sdk/python">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/clusdr/clusdr-python/main/assets/python-lettermark-dark.svg">
-      <img src="https://raw.githubusercontent.com/clusdr/clusdr-python/main/assets/python-lettermark.svg" alt="clusdr Python" width="160" height="164">
+      <img src="https://raw.githubusercontent.com/clusdr/clusdr-python/main/assets/python-lettermark.svg" alt="clusdr Python" width="160" height="180">
     </picture>
   </a>
 </h1>
